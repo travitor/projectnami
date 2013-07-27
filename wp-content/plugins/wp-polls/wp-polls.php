@@ -1629,34 +1629,32 @@ function create_poll_table() {
 	}
 	$create_table = array();
 	$create_table['pollsq'] = "CREATE TABLE $wpdb->pollsq (".
-									"pollq_id int(10) NOT NULL auto_increment,".
-									"pollq_question varchar(200) character set utf8 NOT NULL default '',".
+									"pollq_id int NOT NULL IDENTITY,".
+									"pollq_question varchar(200) NOT NULL default '',".
 									"pollq_timestamp varchar(20) NOT NULL default '',".
-									"pollq_totalvotes int(10) NOT NULL default '0',".
-									"pollq_active tinyint(1) NOT NULL default '1',".
+									"pollq_totalvotes int NOT NULL default '0',".
+									"pollq_active bit NOT NULL default '1',".
 									"pollq_expiry varchar(20) NOT NULL default '',".
-									"pollq_multiple tinyint(3) NOT NULL default '0',".
-									"pollq_totalvoters int(10) NOT NULL default '0',".
-									"PRIMARY KEY (pollq_id)) $charset_collate;";
+									"pollq_multiple smallint NOT NULL default '0',".
+									"pollq_totalvoters int NOT NULL default '0',".
+									"PRIMARY KEY (pollq_id));";
 	$create_table['pollsa'] = "CREATE TABLE $wpdb->pollsa (".
-									"polla_aid int(10) NOT NULL auto_increment,".
-									"polla_qid int(10) NOT NULL default '0',".
-									"polla_answers varchar(200) character set utf8 NOT NULL default '',".
-									"polla_votes int(10) NOT NULL default '0',".
-									"PRIMARY KEY (polla_aid)) $charset_collate;";
+									"polla_aid int NOT NULL IDENTITY,".
+									"polla_qid int NOT NULL default '0',".
+									"polla_answers varchar(200) NOT NULL default '',".
+									"polla_votes int NOT NULL default '0',".
+									"PRIMARY KEY (polla_aid));";
 	$create_table['pollsip'] = "CREATE TABLE $wpdb->pollsip (".
-									"pollip_id int(10) NOT NULL auto_increment,".
+									"pollip_id int NOT NULL IDENTITY,".
 									"pollip_qid varchar(10) NOT NULL default '',".
 									"pollip_aid varchar(10) NOT NULL default '',".
 									"pollip_ip varchar(100) NOT NULL default '',".
 									"pollip_host VARCHAR(200) NOT NULL default '',".
 									"pollip_timestamp varchar(20) NOT NULL default '0000-00-00 00:00:00',".
-									"pollip_user tinytext NOT NULL,".
-									"pollip_userid int(10) NOT NULL default '0',".
-									"PRIMARY KEY (pollip_id),".
-									"KEY pollip_ip (pollip_id),".
-									"KEY pollip_qid (pollip_qid)".
-									") $charset_collate;";
+									"pollip_user text NOT NULL,".
+									"pollip_userid int NOT NULL default '0',".
+									"PRIMARY KEY (pollip_id)".
+									")";
 	maybe_create_table($wpdb->pollsq, $create_table['pollsq']);
 	maybe_create_table($wpdb->pollsa, $create_table['pollsa']);
 	maybe_create_table($wpdb->pollsip, $create_table['pollsip']);
