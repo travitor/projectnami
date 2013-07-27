@@ -1654,7 +1654,9 @@ function create_poll_table() {
 									"pollip_user text NOT NULL,".
 									"pollip_userid int NOT NULL default '0',".
 									"PRIMARY KEY (pollip_id)".
-									")";
+									");".
+									"CREATE NONCLUSTERED INDEX pollip_ip_index ON wp_pollsip (pollip_ip);".
+									"CREATE NONCLUSTERED INDEX pollip_qid_index ON wp_pollsip (pollip_qid);";
 	maybe_create_table($wpdb->pollsq, $create_table['pollsq']);
 	maybe_create_table($wpdb->pollsa, $create_table['pollsa']);
 	maybe_create_table($wpdb->pollsip, $create_table['pollsip']);
