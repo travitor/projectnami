@@ -74,7 +74,7 @@ if(!empty($_POST['do'])) {
 				$pollq_multiple = 0;
 			}
 			// Insert Poll
-			$add_poll_question = $wpdb->query("INSERT INTO $wpdb->pollsq (pollq_id,pollq_question,pollq_timestamp,pollq_totalvotes,pollq_active,pollq_expiry,pollq_multiple,pollq_totalvoters) VALUES (0, '$pollq_question', '$pollq_timestamp', 0, $pollq_active, '$pollq_expiry', $pollq_multiple, 0)");
+			$add_poll_question = $wpdb->query("INSERT INTO $wpdb->pollsq VALUES ('$pollq_question', '$pollq_timestamp', 0, $pollq_active, '$pollq_expiry', $pollq_multiple, 0)");
 			if(!$add_poll_question) {
 				$text .= '<p style="color: red;">'.sprintf(__('Error In Adding Poll \'%s\'.', 'wp-polls'), stripslashes($pollq_question)).'</p>';
 			}
@@ -83,7 +83,7 @@ if(!empty($_POST['do'])) {
 			$polla_qid = intval($wpdb->insert_id);
 			foreach($polla_answers as $polla_answer) {
 				$polla_answer = addslashes(trim($polla_answer));
-				$add_poll_answers = $wpdb->query("INSERT INTO $wpdb->pollsa (polla_aid,polla_qid,polla_answers,polla_votes) VALUES (0, $polla_qid, '$polla_answer', 0)");
+				$add_poll_answers = $wpdb->query("INSERT INTO $wpdb->pollsa VALUES ($polla_qid, '$polla_answer', 0)");
 				if(!$add_poll_answers) {
 					$text .= '<p style="color: red;">'.sprintf(__('Error In Adding Poll\'s Answer \'%s\'.', 'wp-polls'), stripslashes($polla_answer)).'</p>';
 				}
