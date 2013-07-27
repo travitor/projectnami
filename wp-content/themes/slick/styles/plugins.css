@@ -1,0 +1,57 @@
+
+/* `PageNavi
+-------------------------------------------------------------- */
+
+.wp-pagenavi {
+	margin-top: 10px;
+	margin-bottom: 50px;
+	color: #828c94;
+	font-weight: bold;
+	width: 90%;
+	float: left;
+	display: block;
+}
+
+.page-template-tpl-portfolio-php .wp-pagenavi {
+	margin-bottom: 10px;
+}
+
+.wp-pagenavi span {
+	/* Page 1 of ... */
+	text-decoration: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.wp-pagenavi a,
+.wp-pagenavi span.current {
+	margin: auto 1px;
+	background: transparent;
+	border: 1px solid transparent;
+	padding: 4px 8px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-transition: color .3s linear, background .3s linear, border .3s linear;
+	-moz-transition: color .3s linear, background .3s linear, border .3s linear;
+	-o-transition: color .3s linear, background .3s linear, border .3s linear;
+	transition: color .3s linear, background .3s linear, border .3s linear;
+}
+
+.wp-pagenavi span.current {
+	border: 1px solid #e5eaef;
+	background: #fff;
+	color: #828A94 !important;
+}
+
+.wp-pagenavi a:hover {
+	background: #39c; /* style.php */
+	border-color: #39c; /* style.php */
+	border: 1px solid;
+	color: #fff;
+}
+
+.wp-pagenavi .pages {
+	margin-right: 15px;
+}
