@@ -1337,7 +1337,7 @@ function vote_poll() {
 						$vote_q = $wpdb->query("UPDATE $wpdb->pollsq SET pollq_totalvotes = (pollq_totalvotes+".sizeof($poll_aid_array)."), pollq_totalvoters = (pollq_totalvoters+1) WHERE pollq_id = $poll_id AND pollq_active = 1");
 						if($vote_q) {
 							foreach($poll_aid_array as $polla_aid) {
-								$wpdb->query("INSERT INTO $wpdb->pollsip VALUES (0, $poll_id, $polla_aid, '$pollip_ip', '$pollip_host', '$pollip_timestamp', '$pollip_user', $pollip_userid)");
+								$wpdb->query("INSERT INTO $wpdb->pollsip VALUES ($poll_id, $polla_aid, '$pollip_ip', '$pollip_host', '$pollip_timestamp', '$pollip_user', $pollip_userid)");
 							}
 							echo display_pollresult($poll_id,$poll_aid_array, false);
 						} else {

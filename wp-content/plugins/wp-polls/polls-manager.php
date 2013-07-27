@@ -125,7 +125,7 @@ if(!empty($_POST['do'])) {
 					$polla_answer_new = addslashes(trim($polla_answer_new));
 					if(!empty($polla_answer_new)) {
 						$polla_answer_new_vote = intval($polla_answers_new_votes[$i]);
-						$add_poll_answers = $wpdb->query("INSERT INTO $wpdb->pollsa VALUES (0, $pollq_id, '$polla_answer_new', $polla_answer_new_vote)");
+						$add_poll_answers = $wpdb->query("INSERT INTO $wpdb->pollsa VALUES ($pollq_id, '$polla_answer_new', $polla_answer_new_vote)");
 						if(!$add_poll_answers) {
 							$text .= '<p style="color: red;">'.sprintf(__('Error In Adding Poll\'s Answer \'%s\'.', 'wp-polls'), stripslashes($polla_answer_new)).'</p>';
 						} else {
